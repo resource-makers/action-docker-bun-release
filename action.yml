@@ -1,4 +1,4 @@
-name: "Publish Docker Image"
+name: "action-docker-bun-release"
 description: "Builds and pushes a Docker image to a registry using the bundled Dockerfile"
 author: "Raphael Goetz <contact@packforge.zip>"
 branding:
