@@ -12,12 +12,14 @@ inputs:
     default: "ghcr.io"
   image_name:
     description: "Image name (e.g. ${{ github.repository }})"
-    required: false
-    default: "${{ github.repository }}"
+    required: true
   dockerfile:
     description: "Path to bundled Dockerfile inside this action (relative to action root)"
     required: false
     default: "Dockerfile"
+  token:
+    description: "GitHub token with packages write permissions"
+    required: true
 
 runs:
   using: "composite"
@@ -27,7 +29,8 @@ runs:
 
     - name: Copy bundled Dockerfile into workspace
       run: |
-        cp "${{ github.action_path }}/${{ inputs.dockerfile }}" "${{ github.workspace }}/Dockerfile"
+        cp "${GITHUB_ACTION_PATH}/${{ inputs.dockerfile }}" "${GITHUB_WORKSPACE}/Dockerfile"
+      shell: bash
 
     - name: Log in to the Container registry
       uses: docker/login-action@v2
