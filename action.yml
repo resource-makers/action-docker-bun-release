@@ -11,7 +11,7 @@ inputs:
     required: false
     default: "ghcr.io"
   image_name:
-    description: "Image name (e.g. ${{ github.repository }})"
+    description: "Image name"
     required: true
   dockerfile:
     description: "Path to bundled Dockerfile inside this action (relative to action root)"
@@ -32,13 +32,13 @@ runs:
         cp "${GITHUB_ACTION_PATH}/${{ inputs.dockerfile }}" "${GITHUB_WORKSPACE}/Dockerfile"
       shell: bash
 
-    - name: Log in to the Container registry
+    - name: Log in to registry
       uses: docker/login-action@v2
       with:
         registry: ${{ inputs.registry }}
         username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-
+        password: ${{ inputs.token }}
+        
     - name: Extract metadata (tags & labels)
       id: meta
       uses: docker/metadata-action@v4
