@@ -1,6 +1,6 @@
 name: "packforge-packaging"
 description: "Builds and pushes a Docker image to a registry using the bundled Dockerfile (for the Packforge Organisation)"
-author: "Raphael Goetz <contact@packforge.zip>"
+author: "Raphael Goetz contact@packforge.zip"
 branding:
   icon: "package"
   color: "blue"
