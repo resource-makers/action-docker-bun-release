@@ -29,7 +29,7 @@ runs:
 
     - name: Copy bundled Dockerfile into workspace
       run: |
-        cp "${GITHUB_ACTION_PATH}/${{ inputs.dockerfile }}" "${GITHUB_WORKSPACE}/Dockerfile"
+        cp "${GITHUB_ACTION_PATH}/docker-images/${{ inputs.dockerfile }}" "${GITHUB_WORKSPACE}/Dockerfile"
       shell: bash
 
     - name: Log in to registry
